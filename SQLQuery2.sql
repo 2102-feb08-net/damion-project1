@@ -36,10 +36,11 @@ Create Table Member(
 	ID INT Primary Key NOT NULL IDENTITY,
 	FirstName NVARCHAR(255) NOT NULL,
 	LastName NVARCHAR(255) NOT NULL,
-	Role NVARCHAR(255) NOT NULL,
 	Email NVARCHAR(255) NOT NULL UNIQUE,
 	password NVARCHAR(255) NOT NULL, 
 );
+
+
 
 
 
@@ -112,8 +113,10 @@ select SI.*, S.StorePhoneNumber,S.StoreLocationAddress, S.StoreLocationCity,S.St
  --select Email from Member
  --where email = 'damion.silver@revature.com';
 
- INSERT INTO Member(FirstName,LastName,Role,Email,Password)
- VALUES('DAMION','SILVER','ADMIN','damion.silver@gmail.com','password');
+ INSERT INTO Member(FirstName,LastName,Email,Password)
+ VALUES('DAMION','SILVER','damion.silver@gmail.com','password');
+
+
   select * from Member;
 
   select * from Stores;

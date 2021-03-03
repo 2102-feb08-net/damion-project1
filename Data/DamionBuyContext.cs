@@ -32,7 +32,7 @@ namespace Data
             {
                 entity.ToTable("Member");
 
-                entity.HasIndex(e => e.Email, "UQ__Member__A9D10534B1315C4A")
+                entity.HasIndex(e => e.Email, "UQ__Member__A9D1053498CA66BC")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -56,7 +56,7 @@ namespace Data
 
                 entity.Property(e => e.Role)
                     .IsRequired()
-                    .HasMaxLength(255);
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -72,12 +72,12 @@ namespace Data
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__Orders__Customer__7E22B05D");
+                    .HasConstraintName("FK__Orders__Customer__41A3B202");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Orders__StoreID__7F16D496");
+                    .HasConstraintName("FK__Orders__StoreID__4297D63B");
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -93,12 +93,12 @@ namespace Data
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("FK__OrderItem__ORDER__01F34141");
+                    .HasConstraintName("FK__OrderItem__ORDER__457442E6");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Productid)
-                    .HasConstraintName("FK__OrderItem__PRODU__02E7657A");
+                    .HasConstraintName("FK__OrderItem__PRODU__4668671F");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -162,12 +162,12 @@ namespace Data
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__STORE_INV__Produ__7775B2CE");
+                    .HasConstraintName("FK__STORE_INV__Produ__3AF6B473");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__STORE_INV__Store__7869D707");
+                    .HasConstraintName("FK__STORE_INV__Store__3BEAD8AC");
             });
 
             OnModelCreatingPartial(modelBuilder);
