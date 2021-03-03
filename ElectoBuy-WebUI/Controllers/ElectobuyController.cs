@@ -18,7 +18,7 @@ namespace Models
             _userrepo = userrepo;
         }
 
-        [HttpGet]
+        [HttpGet("{email}")]
         public ActionResult<IEnumerable<User>> SearchUserByEmail(string email)
         { 
 
