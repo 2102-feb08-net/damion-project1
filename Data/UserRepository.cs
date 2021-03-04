@@ -43,7 +43,13 @@ namespace Data
 
               }
               else{
-                  throw new Exception("User was not found. Please try again.");
+                   user.FirstName = null;
+                    user.Lastname = null;
+                    user.Email =null;
+                    user.Id = null;
+                    user.Password =null;
+                    user.Role = null;
+
               }
 
               return user;

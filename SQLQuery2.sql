@@ -38,6 +38,7 @@ Create Table Member(
 	LastName NVARCHAR(255) NOT NULL,
 	Email NVARCHAR(255) NOT NULL UNIQUE,
 	password NVARCHAR(255) NOT NULL, 
+	Role NVARCHAR(50) NOT NULL,
 );
 
 
@@ -113,8 +114,11 @@ select SI.*, S.StorePhoneNumber,S.StoreLocationAddress, S.StoreLocationCity,S.St
  --select Email from Member
  --where email = 'damion.silver@revature.com';
 
- INSERT INTO Member(FirstName,LastName,Email,Password)
- VALUES('DAMION','SILVER','damion.silver@gmail.com','password');
+ INSERT INTO Member(FirstName,LastName,Email,Password, Role)
+ VALUES('DAMION','SILVER','damion.silver@gmail.com','password', 'Admin');
+
+ INSERT INTO Member(FirstName,LastName,Email,Password, Role)
+ VALUES('DAJIA','BRIDGERS','dajia.bridgers@gmail.com','password', 'User');
 
 
   select * from Member;
