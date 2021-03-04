@@ -254,8 +254,28 @@
       
           <!-- Already Registered-->
           <div id="formFooter">
-            <p id="displayusersid"></p>
+            <table class="table">
+               
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Password</th>
+                  </tr>
+                
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>@mdo</td>
+                  </tr>
+                
+              </table>
           </div>
+
+          
       
         </div>
       </div>
@@ -278,8 +298,18 @@
         email: customersearch.elements['searchforuserbyemail'].value
 
         };
+    
+        fetch(`/api/users/${search.email}`)
+        .then(response => response.json())
+        .then(customer => {
+            var paragraphtag = document.getElementById("formFooter");
+            var table = document.createElement('table');
+            var header = table.createTHead();
+            var row = header.insertRow
 
-        fetch(/api/users/{search.email})
+
+
+        })
 
 
 

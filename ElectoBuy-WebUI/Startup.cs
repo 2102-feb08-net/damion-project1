@@ -57,6 +57,7 @@ namespace ElectoBuy_WebUI
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -69,3 +70,4 @@ namespace ElectoBuy_WebUI
         }
     }
 }
+
