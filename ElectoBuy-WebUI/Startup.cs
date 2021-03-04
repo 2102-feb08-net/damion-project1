@@ -43,6 +43,7 @@ namespace ElectoBuy_WebUI
             });
 
             services.AddScoped<IUser,UserRepository>();
+            services.AddScoped<IStore,StoreRepository>();
             
         }
 

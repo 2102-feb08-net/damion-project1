@@ -9,6 +9,5 @@ namespace Models
 
 
        public User SearchUserByEmail(string email);
-
     }
 }
