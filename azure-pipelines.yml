@@ -20,6 +20,7 @@ variables:
 # the steps to follow. here we have one script step, a command run in bash
 # starting from the root folder of the repository.
 steps:
+#prepare the analysis 
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'project1'
@@ -38,21 +39,23 @@ steps:
     command: 'test'
     arguments: '--configuration $(buildConfiguration) --collect "xplat code coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover'
 
-
+#actually run the ana
 - task: SonarCloudAnalyze@1
   displayName: sonar run analysis
 
+#publiish ana to sonar cloud
 - task: SonarCloudPublish@1
   displayName: publish sonar quality gate
   inputs:
     pollingTimeoutSec: '300'
 
+#publish the code coverage to sonar 
 - task: PublishCodeCoverageResults@1
   displayName: publish code coverage report
   inputs:
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: '$(Agent.TempDirectory)/*/coverage.cobertura.xml'
-
+#package project and send to virtual machine in a zip
 - task: DotNetCoreCLI@2
   displayName: dotnet publish
   inputs:
@@ -60,6 +63,7 @@ steps:
     publishWebProjects: true
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
     zipAfterPublish: true
+  #deploy to azure app service
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Azure subscription 1(d41c9a39-677a-4e01-8508-b0dae33ccc86)'
