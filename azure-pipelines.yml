@@ -58,7 +58,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    projects: 'damion-project1/ElectoBuy-WebUI/'
+    projects: 'ElectoBuy-WebUI/'
     zipAfterPublish: true
 - task: AzureRmWebAppDeployment@4
   inputs:
