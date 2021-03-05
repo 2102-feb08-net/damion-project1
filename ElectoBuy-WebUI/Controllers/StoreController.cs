@@ -22,9 +22,9 @@ namespace Models
         public ActionResult<IEnumerable<Store>> AllStores()
         { 
 
-            var user = _userrepo.AllStores();
+            var store = _userrepo.AllStores();
 
-            return Ok(user);
+            return Ok(store);
 
 
         }
@@ -33,11 +33,18 @@ namespace Models
         public ActionResult<IEnumerable<Store>> FindStore(string phone_number)
         { 
 
-            var user = _userrepo.FindStore(phone_number);
+            var store = _userrepo.FindStore(phone_number);
 
-            return Ok(user);
+            return Ok(store);
 
 
+        }
+
+            [HttpPost]
+        public void AddStore(Store store)
+        { 
+
+            _userrepo.AddStore(store);    
         }
 
 

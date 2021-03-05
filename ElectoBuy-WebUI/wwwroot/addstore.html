@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>ElectoBuy Admin Portal</title>
+
+
+    <style>
+
+
+#cover {
+    background: #56baed; ;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* only used for background overlay not needed for centering */
+form:before {
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: -1;
+    border-radius: 10px;
+}
+    </style>
+
+  
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="adminindex.html">ElectoBuy Admin Portal</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="">Store Orders <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="searchuser.html">Search User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="addstore.html">Add Store</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Add Store Inventory</a>
+              </li>
+          </ul>
+          <span class="navbar-text">
+            <a class="nav-link" href="#">Sign Out</a>
+          </span>
+        </div>
+      </nav>
+
+
+      <section id="cover" class="min-vh-100">
+        <div id="cover-caption">
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                        <h1 class="display-4 py-2 text-truncate">Add New Store</h1>
+                        <div class="px-2">
+                            <form id="addnewstore" action="" class="justify-content-center">
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store Address </label>
+                                    <input id="storeaddress" type="text" class="form-control" placeholder="Store Address: EX => 123 main st"  required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store City </label>
+                                    <input id="storecity" type="text" class="form-control" placeholder="Store City: EX => Greensboro" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store State </label>
+                                    <input id="storestate" type="text" class="form-control" placeholder="Store State: EX => North Carolina" required>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store Country </label>
+                                    <input id="storecountry" type="text" class="form-control" placeholder="Store Zip Code Country: EX => United States" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store Zip Code </label>
+                                    <input id="storezipcode" type="text" class="form-control" placeholder="Store Zip Code: EX =>27870" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only">Store Phone Number</label>
+                                    <input id="storephonenumber" type="text" class="form-control" placeholder="Store Phone Number: EX => 5555555555" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg">Process</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+       <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        var form = document.getElementById("addnewstore");
+
+        form.addEventListener("submit", e =>  {
+                    e.preventDefault();
+
+                    const store = {
+                        address : form.elements['storeaddress'].value,
+                        city : form.elements['storecity'].value,
+                        state : form.elements['storestate'].value,
+                        country : form.elements['storecountry'].value,
+                        zipcode : form.elements['storezipcode'].value,
+                        phonenumber : form.elements['storephonenumber'].value
+
+                    }
+
+                    return fetch(`api/stores`,{method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify(store)})
+                    .then(response => {
+                                    if (!response.ok) {
+                                        alert("An error occured while trying to create a new store. Please try again")
+                                        form.elements['storeaddress'].value = "",
+                                        form.elements['storecity'].value = "",
+                                        form.elements['storestate'].value = "",
+                                        form.elements['storecountry'].value = "",
+                                        form.elements['storezipcode'].value = "",
+                                        form.elements['storephonenumber'].value = ""
+
+                                    };
+                                    
+
+        });
+    });
+    
+    
+    </script>
+   
+  </body>
+</html>

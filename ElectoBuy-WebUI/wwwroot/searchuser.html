@@ -20,11 +20,74 @@
             align-items: center;
           }
     </style>
+
+<script>
+
+  var customersearch = document.getElementById("usersearchform");
+
+  customersearch.addEventListener('submit' , e =>  {
+
+
+  e.preventDefault();
+  const search = {
+
+
+  email: customersearch.elements['searchforuserbyemail'].value
+
+  };
+
+  fetch(`/api/users/${search.email}`)
+  .then(response => response.json())
+  .then(customer => {
+      var table = document.getElementById("usersearchresulttable");
+      var row = table.insertRow(1);
+      row.className = "table-primary"
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      cell1.innerHTML = `${customer.id}`;
+      cell2.innerHTML = `${customer.firstName}`;
+      cell3.innerHTML = `${customer.lastname}`;
+      cell4.innerHTML = `${customer.role}`;
+      cell5.innerHTML = `${customer.password}`;
+      
+
+      
+
+
+
+  })
+
+  document.getElementById("searchforuserbyemail").value = "";
+
+
+
+});
+
+
+
+
+document.getElementById("cleartable").addEventListener("click", function(event){
+
+event.preventDefault();
+var table = document.getElementById("usersearchresulttable");
+
+var rows = table.rows;
+
+for (let i = 1; i < rows.length; i++) {
+  rows[i].innerHTML = "";
+  
+}
+});
+
+</script>
    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Search User</a>
+        <a class="navbar-brand" href="adminindex.html">ElectoBuy Admin Portal</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +100,7 @@
               <a class="nav-link active" href="searchuser.html">Search User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Add Store</a>
+              <a class="nav-link" href="addstore.html">Add Store</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Add Store Inventory</a>
@@ -48,6 +111,7 @@
           </span>
         </div>
       </nav>
+      
 
 <div class="vertical-center">
 
@@ -80,7 +144,7 @@
                     <div class="card-body"> 
                         <h5 class="card-title">User Result</h5> 
                         <table id="usersearchresulttable" class="table table-striped table-bordered table-responsive" >
-                 
+                            
                           <tr>
                             <th scope="col">ID</th>
                             <th scope="col">First Name</th>
@@ -114,76 +178,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script>
 
-        var customersearch = document.getElementById("usersearchform");
-
-        customersearch.addEventListener('submit', e =>  {
-
-        e.preventDefault();
-        const search = {
-
-
-        email: customersearch.elements['searchforuserbyemail'].value
-
-        };
-    
-        fetch(`/api/users/${search.email}`)
-        .then(response => response.json())
-        .then(customer => {
-            var table = document.getElementById("usersearchresulttable");
-            var row = table.insertRow(1);
-            row.className = "table-primary"
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            cell1.innerHTML = `${customer.id}`;
-            cell2.innerHTML = `${customer.firstName}`;
-            cell3.innerHTML = `${customer.lastname}`;
-            cell4.innerHTML = `${customer.role}`;
-            cell5.innerHTML = `${customer.password}`;
-            
-  
-            
-
-
-
-        })
-
-        document.getElementById("searchforuserbyemail").value = "";
-
-
-
-    });
-
-
-
-
-    document.getElementById("cleartable").addEventListener("click", function(event){
-
-      event.preventDefault();
-      var table = document.getElementById("usersearchresulttable");
-
-      var rows = table.rows;
-
-      for (let i = 1; i < rows.length; i++) {
-        rows[i].innerHTML = "";
-        
-      }
-      
-     
-
-    });
-
-
-
-
-
-  
-
-
-    </script>
   </body>
 </html>
