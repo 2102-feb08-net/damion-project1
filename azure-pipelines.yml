@@ -57,8 +57,7 @@ steps:
   displayName: dotnet publish
   inputs:
     command: 'publish'
-    publishWebProjects: false
-    projects: 'ElectoBuy-WebUI'
+    publishWebProjects: true
     zipAfterPublish: true
 - task: AzureRmWebAppDeployment@4
   inputs:
