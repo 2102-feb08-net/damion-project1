@@ -30,7 +30,7 @@ namespace ElectoBuy_WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = File.ReadAllText("C:/Revature/databaseconnectionstring.txt");
+            string connectionString = Configuration["ConnectionStrings:ElectoBuyDB"];
              services.AddDbContext<DamionBuyContext>(options =>
             {
                 options.UseSqlServer(connectionString);
