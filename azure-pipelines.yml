@@ -58,11 +58,12 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
     zipAfterPublish: true
-- task: AzureRmWebAppDeployment@4
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(d41c9a39-677a-4e01-8508-b0dae33ccc86)'
     appType: 'webApp'
-    WebAppName: 'ElectoBuy'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    appSettings: 
+    appName: 'ElectoBuy'
