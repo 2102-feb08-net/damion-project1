@@ -40,11 +40,39 @@ namespace Models
 
         }
 
+
+             [HttpGet("findstorebyid/{id}")]
+        public ActionResult<IEnumerable<Store>> FindStoreById(int id)
+        { 
+
+            var store = _userrepo.FindStoreById(id);
+
+            return Ok(store);
+
+
+        }
+
+
+
+                    [HttpGet("getstorehistory/{id}")]
+        public ActionResult<IEnumerable<Store>> FindStoreOrderHistory(int id)
+        { 
+
+            var store = _userrepo.FindStoreOrderHistory(id);
+
+            return Ok(store);
+
+
+        }
+
+
+
             [HttpPost]
         public void AddStore(Store store)
         { 
 
-            _userrepo.AddStore(store);    
+            _userrepo.AddStore(store);   
+
         }
 
 

@@ -55,9 +55,6 @@ form:before {
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-              <a class="nav-link" href="">Store Orders <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
               <a class="nav-link active" href="searchuser.html">Search User</a>
             </li>
@@ -140,18 +137,23 @@ form:before {
                     e.preventDefault();
 
                     const store = {
-                        address : form.elements['storeaddress'].value,
-                        city : form.elements['storecity'].value,
-                        state : form.elements['storestate'].value,
-                        country : form.elements['storecountry'].value,
-                        zipcode : form.elements['storezipcode'].value,
-                        phonenumber : form.elements['storephonenumber'].value
+                      StoreLocationAddress : form.elements['storeaddress'].value,
+                      StoreLocationCity : form.elements['storecity'].value,
+                      StoreLocationState : form.elements['storestate'].value,
+                      StoreLocationCountry : form.elements['storecountry'].value,
+                      StoreLocationZip : form.elements['storezipcode'].value,
+                      StorePhoneNumber : form.elements['storephonenumber'].value
 
-                    }
+                    };
 
-                    return fetch(`api/stores`,{method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify(store)})
+
+                    fetch(`api/stores`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(store)})
+                    
+                    
                     .then(response => {
+
                                     if (!response.ok) {
+                                        console.log(store);
                                         alert("An error occured while trying to create a new store. Please try again")
                                         form.elements['storeaddress'].value = "",
                                         form.elements['storecity'].value = "",
@@ -160,10 +162,22 @@ form:before {
                                         form.elements['storezipcode'].value = "",
                                         form.elements['storephonenumber'].value = ""
 
+                                    }
+
+                                    else{
+                                      window.location.href = "/adminindex.html";
+                                    alert("You have successfully added a store.");
+
                                     };
+                                   
+                                   
+
+
                                     
 
         });
+          
+
     });
     
     

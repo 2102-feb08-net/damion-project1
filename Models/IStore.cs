@@ -11,6 +11,11 @@ namespace Models
         public Store FindStore(string phone_number);
 
         public List<Store> AllStores();
+
+        public Store FindStoreById(int id);
+
+        public List<Order> FindStoreOrderHistory(int id);
+
         
 
 

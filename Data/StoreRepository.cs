@@ -74,5 +74,61 @@ namespace Data
 
                 return newfoundstore;
         }
+
+        Models.Store IStore.FindStoreById(int id)
+        {
+            Models.Store newfoundstore = new Models.Store();
+            Store query = _context.Stores.Where(x => x.Id.Equals(id)).First();
+            if( query == null){
+
+                    newfoundstore = null;
+
+                    }       
+
+                else{
+                    newfoundstore.Id = query.Id;
+
+
+                    newfoundstore.StoreName = query.StoreName;
+
+                    newfoundstore.StoreLocationAddress = query.StoreLocationAddress;
+
+                    newfoundstore.StoreLocationCity = query.StoreLocationCity;
+
+                    newfoundstore.StoreLocationState = query.StoreLocationState;
+                    newfoundstore.StoreLocationCountry = query.StoreLocationCountry;
+
+                    newfoundstore.StoreLocationZip = query.StoreLocationCountry;
+                    newfoundstore.StorePhoneNumber = query.StorePhoneNumber;
+
+                     }
+
+                return newfoundstore;
+        }
+
+        List<Models.Order> IStore.FindStoreOrderHistory(int store)
+        {
+            List<Models.Order> ListOfOrders = new List<Models.Order>();
+
+            
+            List<Order> query = _context.Orders.Where(x => x.StoreId.Equals(store)).ToList();
+
+            foreach (var i in query)
+            {
+                Models.Order order = new Models.Order();
+                order.Id = i.Id;
+                order.Date = i.DatePlaced;
+                order.CustomerID = i.CustomerId;
+                order.StoreID = i.StoreId;
+
+
+                ListOfOrders.Add(order);            
+            }
+            
+
+            return ListOfOrders;
+
+
+        }
     }
     }

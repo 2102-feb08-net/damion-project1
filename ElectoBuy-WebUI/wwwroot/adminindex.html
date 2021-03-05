@@ -20,6 +20,9 @@
         display: flex;
         align-items: center;
       }
+      a{
+        color: black;
+      }
     </style>
   </head>
   <body onload="LoadStores()">
@@ -30,9 +33,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-              <a class="nav-link" href="">Store Orders <span class="sr-only"></span></a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="searchuser.html">Search User</a>
             </li>
@@ -109,14 +109,14 @@
             var cell7 = row.insertCell(6);
             var cell8 = row.insertCell(7);
             
-            cell1.innerHTML = `${element.id}`;
-            cell2.innerHTML = `ElectoBuy`;
-            cell3.innerHTML = `${element.storeLocationAddress}`;
-            cell4.innerHTML = `${element.storeLocationCity}`;
-            cell5.innerHTML = `${element.storeLocationState}`;
-            cell6.innerHTML = `${element.storeLocationCountry}`;
-            cell7.innerHTML = `${element.storeLocationZip}`;
-            cell8.innerHTML = `${element.storePhoneNumber}`;
+            cell1.innerHTML = `<button  class="btn btn-primary" href="/storehistory.html"><a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.id}</a></button`;
+            cell2.innerHTML =  `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">ElectoBuy</a>`;
+            cell3.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeLocationAddress}</a>`;
+            cell4.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeLocationCity}</a>`;
+            cell5.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeLocationState}</a>`;
+            cell6.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeLocationCountry}</a>`;
+            cell7.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeLocationZip}</a>`;
+            cell8.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storePhoneNumber}</a>`;
              console.log(element);
            });
   
@@ -126,6 +126,16 @@
 
         })
       }
+
+      function linktodetails(clicked_id){
+
+        window.sessionStorage.setItem("storedetaillink", clicked_id );
+
+        
+
+      }
+
+
       </script>
   </body>
 </html>
