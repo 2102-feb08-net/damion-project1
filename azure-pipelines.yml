@@ -1,0 +1,69 @@
+# a pipeline is a set of stuff that will run to implement continuous integration
+#    build, test, anything it can do to automatically check the quality of the code.
+#   and, maybe also package/publish it, maybe even deploy it to some server or cloud environment like Azure App Service
+
+
+# every pipeline has a set of conditions deciding when it will activate.
+# here we configure: it will run on every push to main branch specifically.
+trigger:
+- main
+
+# set requirements for the build agent that will run the stuff
+# here: ubuntu (latest version) virtual machine
+pool:
+  vmImage: ubuntu-latest
+
+# set variables, referenced with $() syntax
+variables:
+  buildConfiguration: 'Release'
+
+# the steps to follow. here we have one script step, a command run in bash
+# starting from the root folder of the repository.
+steps:
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'project1'
+    organization: '2102-feb08-net'
+    scannerMode: 'MSBuild'
+    projectKey: '2102-feb08-net_damion-project1'
+    projectName: 'project1'
+    extraProperties: 'sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/*/coverage.opencover.xml'
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: dotnet build
+
+- task: DotNetCoreCLI@2
+  displayName: dotnet test
+  inputs:
+    command: 'test'
+    arguments: '--configuration $(buildConfiguration) --collect "xplat code coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura,opencover'
+
+
+- task: SonarCloudAnalyze@1
+  displayName: sonar run analysis
+
+- task: SonarCloudPublish@1
+  displayName: publish sonar quality gate
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: PublishCodeCoverageResults@1
+  displayName: publish code coverage report
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Agent.TempDirectory)/*/coverage.cobertura.xml'
+
+- task: DotNetCoreCLI@2
+  displayName: dotnet publish
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
+    zipAfterPublish: true
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(d41c9a39-677a-4e01-8508-b0dae33ccc86)'
+    appType: 'webApp'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    appSettings: 
+    appName: 'ElectoBuy'
