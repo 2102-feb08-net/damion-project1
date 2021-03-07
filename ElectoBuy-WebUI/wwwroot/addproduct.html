@@ -58,16 +58,15 @@ form:before {
           <li class="nav-item">
             <a class="nav-link " href="searchuser.html">Search User</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="addstore.html">Add Store</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="addproduct.html">Add Product</a>
           </li>
-         
           <li class="nav-item ">
-            <a class="nav-link" href="addstoreinventory.html">Update Inventory</a>
-          </li>
+              <a class="nav-link" href="addstoreinventory.html">Update Inventory</a>
+            </li>
         </ul>
         <span class="navbar-text">
           <a class="nav-link" href="#">Sign Out</a>
@@ -81,40 +80,27 @@ form:before {
             <div class="container">
                 <div class="row text-white">
                     <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
-                        <h1 class="display-4 py-2 text-truncate">Add New Store</h1>
+                        <h1 class="display-4 py-2 text-truncate">Add New Product</h1>
                         <div class="px-2">
-                            <form id="addnewstore" action="" class="justify-content-center">
+                            <form id="addnewproduct" action="" class="justify-content-center">
 
                                 <div class="form-group">
-                                    <label class="sr-only">Store Address </label>
-                                    <input id="storeaddress" type="text" class="form-control" placeholder="Store Address: EX => 123 main st"  required>
+                                    <label class="sr-only">Product Name </label>
+                                    <input id="productname" type="text" class="form-control" placeholder="Please enter a product name"  required>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="sr-only">Store City </label>
-                                    <input id="storecity" type="text" class="form-control" placeholder="Store City: EX => Greensboro" required>
+                                    <input id="productprice" type="number" min="0.01" max="10000000.00" step="0.01" class="form-control" placeholder="Please enter a Product Price" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="sr-only">Store State </label>
-                                    <input id="storestate" type="text" class="form-control" placeholder="Store State: EX => North Carolina" required>
+                                    <input id="productdescription" type="text" class="form-control" placeholder="Please enter a short description " required>
                                 </div>
 
 
-                                <div class="form-group">
-                                    <label class="sr-only">Store Country </label>
-                                    <input id="storecountry" type="text" class="form-control" placeholder="Store Zip Code Country: EX => United States" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="sr-only">Store Zip Code </label>
-                                    <input id="storezipcode" type="text" class="form-control" placeholder="Store Zip Code: EX =>27870" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="sr-only">Store Phone Number</label>
-                                    <input id="storephonenumber" type="text" class="form-control" placeholder="Store Phone Number: EX => 5555555555" required>
-                                </div>
+                            
 
                                 <button type="submit" class="btn btn-primary btn-lg">Process</button>
                             </form>
@@ -135,42 +121,38 @@ form:before {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
-        var form = document.getElementById("addnewstore");
+        var form = document.getElementById("addnewproduct");
 
         form.addEventListener("submit", e =>  {
                     e.preventDefault();
 
-                    const store = {
-                      StoreLocationAddress : form.elements['storeaddress'].value,
-                      StoreLocationCity : form.elements['storecity'].value,
-                      StoreLocationState : form.elements['storestate'].value,
-                      StoreLocationCountry : form.elements['storecountry'].value,
-                      StoreLocationZip : form.elements['storezipcode'].value,
-                      StorePhoneNumber : form.elements['storephonenumber'].value
+                    const product = {
+                      ProductName : form.elements['productname'].value,
+                      ProductPrice : form.elements['productprice'].value,
+                      ProductDescription : form.elements['productdescription'].value
+                     
 
                     };
 
 
-                    fetch(`api/stores`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(store)})
+                    fetch(`api/products/addproduct`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(product)})
                     
                     
                     .then(response => {
 
                                     if (!response.ok) {
                                         console.log(store);
-                                        alert("An error occured while trying to create a new store. Please try again")
-                                        form.elements['storeaddress'].value = "",
-                                        form.elements['storecity'].value = "",
-                                        form.elements['storestate'].value = "",
-                                        form.elements['storecountry'].value = "",
-                                        form.elements['storezipcode'].value = "",
-                                        form.elements['storephonenumber'].value = ""
+                                        alert("An error occured while trying to create a new product! Please try again")
+                                        form.elements['productname'].value = "",
+                                        form.elements['productprice'].value = "",
+                                        form.elements['productdescription'].value = ""
+                                      
 
                                     }
 
                                     else{
                                       window.location.href = "/adminindex.html";
-                                    alert("You have successfully added a store.");
+                                    alert("You have successfully added a new product to our database! The next step will be adding the product to each store giving it a quantity!");
 
                                     };
                                    

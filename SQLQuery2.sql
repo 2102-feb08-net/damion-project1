@@ -17,7 +17,7 @@ CREATE TABLE STORES(
 	StoreLocationState TEXT NOT NULL,
 	StoreLocationCountry TEXT NOT NULL,
 	StoreLocationZip NVARCHAR(10) NOT NULL,
-	StorePhoneNumber NVARCHAR(10) NOT NULL,
+	StorePhoneNumber NVARCHAR(10) NOT NULL UNIQUE,
 
 );
 
@@ -80,6 +80,9 @@ VALUES ('Damionwatch', '150.00', 'Smart Watch'),
 ('Alienware Aurora R11 Desktop', '1500.99', 'Alienware Desktop with RTX 2070 SUPER GPU');
 
 
+
+
+
 INSERT INTO STORE_INVENTORY(ProductID, StoreID, ProductQuantity) 
 VALUES ((select ID from Products where ProductName = 'Damionwatch'), (select ID from STORES where StorePhoneNumber='2525555555'), 1),
 ((select ID from Products where ProductName = 'Deenova Laptop Series 1'), (select ID from STORES where StorePhoneNumber='2525555555'), 2),
@@ -119,6 +122,15 @@ select SI.*, S.StorePhoneNumber,S.StoreLocationAddress, S.StoreLocationCity,S.St
 
  INSERT INTO Member(FirstName,LastName,Email,Password, Role)
  VALUES('DAJIA','BRIDGERS','dajia.bridgers@gmail.com','password', 'User');
+
+ INSERT INTO Orders(CustomerID, StoreID, DatePlaced) VALUES (1, 1, GETDATE());
+ INSERT INTO Orders(CustomerID, StoreID, DatePlaced) VALUES (2, 1, GETDATE());
+ INSERT INTO Orders(CustomerID, StoreID, DatePlaced) VALUES (2, 2, GETDATE());
+
+ INSERT INTO Orders(CustomerID, StoreID, DatePlaced) VALUES (2, 2, GETDATE());
+
+
+ select * from STORE_INVENTORY where StoreID = 1;
 
 
   select * from Member;

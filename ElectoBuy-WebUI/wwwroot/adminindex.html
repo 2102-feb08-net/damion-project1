@@ -27,27 +27,31 @@
   </head>
   <body onload="LoadStores()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="adminindex.html">ElectoBuy Admin Portal</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="searchuser.html">Search User</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="addstore.html">Add Store</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Add Store Inventory</a>
-              </li>
-          </ul>
-          <span class="navbar-text">
-            <a class="nav-link" href="#">Sign Out</a>
-          </span>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="adminindex.html">ElectoBuy Admin Portal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="searchuser.html">Search User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="addstore.html">Add Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="addproduct.html">Add Product</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="addstoreinventory.html">Update Inventory</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <a class="nav-link" href="#">Sign Out</a>
+        </span>
+      </div>
+    </nav>
+
 
 
 
@@ -94,8 +98,11 @@
         fetch(`/api/stores`)
         .then(response => response.json())
         .then(customer => {
-
+           
             var table = document.getElementById("storelocationstable");
+            if (customer == null){
+              table.style.display = "none";
+            }
             var tbodyRef = table.getElementsByTagName('tbody')[0];
            customer.forEach(element => {
             var row = tbodyRef.insertRow(0);

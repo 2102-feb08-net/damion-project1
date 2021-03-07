@@ -55,6 +55,33 @@ namespace Data
               return user;
               
              }
-           
+
+       public Models.User GetCustomerById(int id)
+        {
+             var query = _context.Members.FirstOrDefault(p => p.Id == id);
+              User user = new User();
+             if(query !=null){
+                    user.FirstName = query.FirstName;
+                    user.Lastname = query.LastName;
+                    user.Email = query.Email;
+                    user.Id = query.Id;
+                    user.Password = query.Password;
+                    user.Role = query.Role;
+
+              }
+              else{
+                   user.FirstName = null;
+                    user.Lastname = null;
+                    user.Email =null;
+                    user.Id = null;
+                    user.Password =null;
+                    user.Role = null;
+
+              }
+
+              return user;
         }
+
+    
+    }
     }

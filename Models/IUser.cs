@@ -9,5 +9,8 @@ namespace Models
 
 
        public User SearchUserByEmail(string email);
+
+       public User GetCustomerById(int id);
+
     }
 }

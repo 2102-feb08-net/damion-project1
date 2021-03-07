@@ -32,7 +32,7 @@ namespace Data
             {
                 entity.ToTable("Member");
 
-                entity.HasIndex(e => e.Email, "UQ__Member__A9D1053498CA66BC")
+                entity.HasIndex(e => e.Email, "UQ__Member__A9D10534E01E50B9")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -72,12 +72,12 @@ namespace Data
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__Orders__Customer__41A3B202");
+                    .HasConstraintName("FK__Orders__Customer__30441BD6");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Orders__StoreID__4297D63B");
+                    .HasConstraintName("FK__Orders__StoreID__3138400F");
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -93,12 +93,12 @@ namespace Data
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("FK__OrderItem__ORDER__457442E6");
+                    .HasConstraintName("FK__OrderItem__ORDER__3414ACBA");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Productid)
-                    .HasConstraintName("FK__OrderItem__PRODU__4668671F");
+                    .HasConstraintName("FK__OrderItem__PRODU__3508D0F3");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -117,6 +117,9 @@ namespace Data
             modelBuilder.Entity<Store>(entity =>
             {
                 entity.ToTable("STORES");
+
+                entity.HasIndex(e => e.StorePhoneNumber, "UQ__STORES__917F5B8A4D545B52")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
@@ -162,12 +165,12 @@ namespace Data
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__STORE_INV__Produ__3AF6B473");
+                    .HasConstraintName("FK__STORE_INV__Produ__29971E47");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__STORE_INV__Store__3BEAD8AC");
+                    .HasConstraintName("FK__STORE_INV__Store__2A8B4280");
             });
 
             OnModelCreatingPartial(modelBuilder);

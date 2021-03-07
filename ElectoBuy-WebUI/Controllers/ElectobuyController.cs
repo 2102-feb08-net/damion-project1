@@ -29,6 +29,18 @@ namespace Models
 
         }
 
+           [HttpGet("getcustomerbyid/{id}")]
+        public ActionResult<IEnumerable<User>> Get(int id)
+        { 
+
+            var store = _userrepo.GetCustomerById(id);
+
+            return Ok(store);
+
+
+        }
+
+
 
 
 

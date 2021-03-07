@@ -31,6 +31,7 @@ namespace ElectoBuy_WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionString = Configuration["ConnectionStrings:ElectoBuyDB"];
+               // string connectionString = System.IO.File.ReadAllText("/Revature/databaseconnectionstring.txt");
              services.AddDbContext<DamionBuyContext>(options =>
             {
                 options.UseSqlServer(connectionString);
@@ -44,6 +45,8 @@ namespace ElectoBuy_WebUI
 
             services.AddScoped<IUser,UserRepository>();
             services.AddScoped<IStore,StoreRepository>();
+            services.AddScoped<Istoreinventory,StoreInventoryRepository>();
+            services.AddScoped<IProduct,ProductRepository>();
             
         }
 
