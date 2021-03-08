@@ -12,6 +12,7 @@ namespace Models
         public string ProductName {get;set;}
         public decimal ProductPrice { get; set; }
         public string ProductDescription { get; set; }
+        public string ImageUrl { get; set; }
 
         public Product()
         {
@@ -19,7 +20,7 @@ namespace Models
         }
 
 
-        public Product(int Id, string ProductName,decimal ProductPrice, string ProductDescription)
+        public Product(int Id, string ProductName,decimal ProductPrice, string ProductDescription, string ImageUrl)
         {
 
             this.Id= Id;
@@ -29,11 +30,13 @@ namespace Models
             this.ProductPrice = ProductPrice;
 
             this.ProductDescription = ProductDescription;
+            this.ImageUrl = ImageUrl;
+
             
         }
 
 
-            public Product( string ProductName,int ProductPrice, string ProductDescription)
+            public Product( string ProductName,int ProductPrice, string ProductDescription, string ImageUrl )
         {
 
             this.ProductName =ProductName;
@@ -41,6 +44,9 @@ namespace Models
             this.ProductPrice = ProductPrice;
 
             this.ProductDescription = ProductDescription;
+
+            this.ImageUrl = ImageUrl;
+            
             
         }
 

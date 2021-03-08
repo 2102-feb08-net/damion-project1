@@ -17,6 +17,7 @@ namespace Data
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
         public string ProductDescription { get; set; }
+        public string ImageUrl { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<StoreInventory> StoreInventories { get; set; }

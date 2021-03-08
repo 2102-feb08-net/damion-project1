@@ -32,7 +32,7 @@ namespace Data
             {
                 entity.ToTable("Member");
 
-                entity.HasIndex(e => e.Email, "UQ__Member__A9D10534E01E50B9")
+                entity.HasIndex(e => e.Email, "UQ__Member__A9D10534EEAB5A95")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -72,12 +72,12 @@ namespace Data
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__Orders__Customer__30441BD6");
+                    .HasConstraintName("FK__Orders__Customer__3D3402A0");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__Orders__StoreID__3138400F");
+                    .HasConstraintName("FK__Orders__StoreID__3E2826D9");
             });
 
             modelBuilder.Entity<OrderItem>(entity =>
@@ -93,17 +93,23 @@ namespace Data
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Orderid)
-                    .HasConstraintName("FK__OrderItem__ORDER__3414ACBA");
+                    .HasConstraintName("FK__OrderItem__ORDER__41049384");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderItems)
                     .HasForeignKey(d => d.Productid)
-                    .HasConstraintName("FK__OrderItem__PRODU__3508D0F3");
+                    .HasConstraintName("FK__OrderItem__PRODU__41F8B7BD");
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.ImageUrl)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("ImageURL")
+                    .HasDefaultValueSql("('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png')");
 
                 entity.Property(e => e.ProductDescription).HasColumnType("text");
 
@@ -118,7 +124,7 @@ namespace Data
             {
                 entity.ToTable("STORES");
 
-                entity.HasIndex(e => e.StorePhoneNumber, "UQ__STORES__917F5B8A4D545B52")
+                entity.HasIndex(e => e.StorePhoneNumber, "UQ__STORES__917F5B8AA01861B2")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -165,12 +171,12 @@ namespace Data
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__STORE_INV__Produ__29971E47");
+                    .HasConstraintName("FK__STORE_INV__Produ__36870511");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.StoreInventories)
                     .HasForeignKey(d => d.StoreId)
-                    .HasConstraintName("FK__STORE_INV__Store__2A8B4280");
+                    .HasConstraintName("FK__STORE_INV__Store__377B294A");
             });
 
             OnModelCreatingPartial(modelBuilder);

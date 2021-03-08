@@ -6,6 +6,7 @@ CREATE TABLE Products(
 	ProductName NVARCHAR(255) NOT NULL,
 	ProductPrice MONEY NOT NULL,
 	ProductDescription TEXT, 
+	ImageURL VARCHAR DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png',
 );
 
 

@@ -43,7 +43,9 @@ namespace Data
                 newproduct.Id = storequery.Id;
                 newproduct.ProductName = storequery.ProductName;
                 newproduct.ProductDescription = storequery.ProductDescription;
-                newproduct.ProductPrice = storequery.ProductPrice;     
+                newproduct.ProductPrice = storequery.ProductPrice;  
+                newproduct.ImageUrl = storequery.ImageUrl;   
+
             }
 
             return newproduct;
@@ -63,7 +65,9 @@ namespace Data
                 newproduct.Id = storequery.Id;
                 newproduct.ProductName = storequery.ProductName;
                 newproduct.ProductDescription = storequery.ProductDescription;
-                newproduct.ProductPrice = storequery.ProductPrice;     
+                newproduct.ProductPrice = storequery.ProductPrice; 
+                newproduct.ImageUrl = storequery.ImageUrl;    
+
             }
 
             return newproduct;
@@ -77,7 +81,7 @@ namespace Data
             List<Models.Product> AllProducts = new List<Models.Product>();
 
             foreach(var product in database_products){
-                AllProducts.Add(new Models.Product(product.Id, product.ProductName, product.ProductPrice, product.ProductDescription));
+                AllProducts.Add(new Models.Product(product.Id, product.ProductName, product.ProductPrice, product.ProductDescription,product.ImageUrl));
             }
             return AllProducts;
 
