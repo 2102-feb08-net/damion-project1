@@ -211,7 +211,7 @@ form{
     
         <!-- Icon -->
         <div id="logo" class="fadeIn first">
-          <h3>ElectoBuy Sign In</h3>
+          <h3>ElectoBuy Admin Login</h3>
         </div>
     
         <!-- Login Form -->
@@ -223,8 +223,7 @@ form{
     
         <!-- Already Registered-->
         <div id="formFooter">
-          <a class="underlineHover" href="signup.html">Not Registered?</a><br>
-          <a class="underlineHover" href="adminlogin.html">Admin Login</a>
+          <a class="underlineHover" href="Login.html">User Login</a>
         </div>
     
       </div>
@@ -257,29 +256,39 @@ form.addEventListener("submit", e =>  {
     fetch(`/api/users/${search.email}`)
         .then(response => response.json())
         .then(user => {
+          if(user.email == null ){
 
-          console.log(user.password);
-          if(user.email == null){
-            alert("User with this email do not exist. Please try again.");
+
+            alert("Admin with this email do not exist. Please try again.");
             sessionStorage.clear()
-          
+         
         
         
         }
-          else if(search.email == user.email && search.password != user.password){
+        else if(search.email == user.email && search.password != user.password){
             alert("You have the wrong password for this email! Please try again!");
             sessionStorage.clear()
           
           }
-          else{
-            window.location.replace("index.html")
+          
+        else if(user.role != "Admin"){
+          alert("You are not an administrator! You will be logged out and redirected!");
+          window.sessionStorage.clear();
+          window.location.href = "/login.html";
+
+           
+
+        }
+        
+          else if(search.email == user.email && search.password == user.password && user.role == "Admin"){
             window.sessionStorage.setItem("user_email_logged_in", user.email)
             window.sessionStorage.setItem("user_role_logged_in", user.role)
             window.sessionStorage.setItem("user_id_logged_in", user.id)
             window.sessionStorage.setItem("user_password_logged_in", user.password)
+            window.location.replace("adminindex.html");
           }
         });
     });
       </script>
   </body>
-</html>
+</html>;

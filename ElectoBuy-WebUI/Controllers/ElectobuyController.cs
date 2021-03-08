@@ -41,6 +41,31 @@ namespace Models
         }
 
 
+        
+           [HttpPost("adduser")]
+        public void AddCustomer(AddUserDTO user)
+
+
+        { 
+            Models.User  newuser = new User();
+            newuser.Email = user.Email;
+            newuser.FirstName =  user.FirstName;
+            newuser.Lastname = user.LastName;
+            newuser.Password = user.Password;
+            newuser.Role = user.Role;
+            
+
+            
+
+
+
+            _userrepo.AddCustomer(newuser);
+
+
+
+        }
+
+
 
 
 

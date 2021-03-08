@@ -68,6 +68,22 @@ namespace Data
 
             return newproduct;
         }
+
+
+                public List<Models.Product> GetAllProducts()
+        {
+                     var database_products = _context.Products;
+
+            List<Models.Product> AllProducts = new List<Models.Product>();
+
+            foreach(var product in database_products){
+                AllProducts.Add(new Models.Product(product.Id, product.ProductName, product.ProductPrice, product.ProductDescription));
+            }
+            return AllProducts;
+
+            
+        }
+
     }
 }
 

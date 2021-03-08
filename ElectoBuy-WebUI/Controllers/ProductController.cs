@@ -53,6 +53,20 @@ namespace Models
         }
 
 
+           [HttpGet("allproducts")]
+        public ActionResult<IEnumerable<Product>> GeGetAllProductst()
+        { 
+
+            var product = _userrepo.GetAllProducts();
+
+            return Ok(product);
+
+
+        }
+
+
+
+
 
 
     

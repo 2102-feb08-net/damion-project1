@@ -215,10 +215,12 @@ form{
         </div>
     
         <!-- Login Form -->
-        <form>
+        <form id="usereregistrationform">
+          <input type="text" id="firstname" class="fadeIn second" name="firstname" placeholder="First Name" required>
+          <input type="text" id="lastname" class="fadeIn second" name="lastname" placeholder="Last Name" required>
           <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email" required>
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" required>
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="repeat password" required>
+          <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
+          <input type="password" id="repeatpassword" class="fadeIn third" name="repeatpassword" placeholder="repeat password" required>
           <input type="submit" class="fadeIn fourth" value="Sign Up">
         </form>
     
@@ -238,5 +240,63 @@ form{
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      var registrationform = document.getElementById("usereregistrationform");
+      registrationform.addEventListener("submit", e =>  {
+            e.preventDefault();
+      const newuser = {
+                      email : registrationform.elements['login'].value,
+                      firstName : registrationform.elements['firstname'].value,
+                      lastname : registrationform.elements['lastname'].value,
+                      password : registrationform.elements['password'].value,
+                      repeatpassword: registrationform.elements['repeatpassword'].value
+                      
+
+                    };
+
+      if(newuser.password == newuser.repeatpassword){
+      fetch(`/api/users/adduser`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(newuser)})
+      .then(response => {
+
+                  if (!response.ok) {
+
+                      alert("An error occured while trying to register you. Please Try again.")
+                      document.getElementById("firstname").value
+                      registrationform.elements['firstname'].value = "",
+                      registrationform.elements['lastname'].value = "",
+                      registrationform.elements['login'].value = "",
+                      registrationform.elements['password'].value = "",
+                      registrationform.elements['repeatpassword'].value = ""
+                      
+                       
+                    
+
+                  }
+
+                  else{
+                    
+                  alert("You have successfully registered your account!" );
+                  window.location.href = "/login.html";
+
+                  };
+                
+                });
+              }
+
+
+              else{
+                      alert("Your passwords did not match!");
+
+              }
+              });
+
+
+
+     
+
+            
+
+
+    </script>
   </body>
 </html>

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7b0af1eaf3.js" crossorigin="anonymous"></script>
+    <title>ElectoBuy</title>
+    <style>
+        body {
+    background-color: #39ace7
+}
+
+.card {
+    border: none;
+    background: #eee
+}
+
+.search {
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: 20px;
+    height: 50px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px
+}
+
+.search-input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top: 5px;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.4s linear
+}
+
+.search .search-input {
+    padding: 0 10px;
+    width: 100%;
+    caret-color: #39ace7;
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear
+}
+
+.search-icon {
+    height: 34px;
+    width: 34px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #39ace7;
+    font-size: 10px;
+    bottom: 30px;
+    position: relative;
+    border-radius: 5px
+}
+
+.search-icon:hover {
+    color: #fff !important
+}
+
+a:link {
+    text-decoration: none
+}
+
+.card-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    border: none;
+    cursor: pointer;
+    transition: all 2s
+}
+
+.card-inner:hover {
+    transform: scale(1.1)
+}
+
+.mg-text span {
+    font-size: 12px
+}
+
+.mg-text {
+    line-height: 14px
+}
+
+
+    </style>
+  </head>
+  <body>
+ 
+
+          
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">ElectoBuy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-history"></i>Order History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="browsecatalog.html"><i class="far fa-window-restore"></i>Browse Catalog</a>
+            </li>
+          </ul>
+          
+          <span class="navbar-text">
+            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i>Order Cart<span class="badge badge-secondary">New</span></a>
+          </span><br>
+          <span class="navbar-text">
+            <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+          </span>
+          
+        </div>
+      </nav>
+
+
+
+
+      <div class="container mt-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <div class="card p-4 mt-3">
+                    <h3 class="heading mt-5 text-center">Search For Product</h3>
+                    <div class="d-flex justify-content-center px-5">
+                        <div class="search"> <input id="searchproduct" type="text" class="search-input" placeholder="Search..." name=""> <a  href="#" class="search-icon"> <i id="searchproductbutton" class="fa fa-search"></i> </a> </div>
+                    </div>
+                    <div class="row mt-4 g-1 px-4 mb-5">
+                        <div class="col-md-3">
+                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6> Id</h6>
+                                <div class="text-center mg-text"> <span id="id" class="mg-text"></span> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Name</h6>
+                                <div class="text-center mg-text"> <span id="productname" class="mg-text"></span> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Price</h6>
+                                <div class="text-center mg-text"> <span id="price" class="mg-text"></span> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Cart</h6>
+                                <div class="text-center mg-text"> <span id="addtocart" class="mg-text"></span> </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+
+
+    <div class="row justify-content-center" >
+        <div id="insertdiv" class="col-auto">
+         
+             
+        </div>
+      </div>
+      
+
+
+
+
+ <!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitter.com/" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com/" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.github.com/" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        ElectoBuy is an electronic e-commerce store. We work we numerous vendors to deliver our customers high quality products. Our customers are our top priority. ElectoBuy works hard to ensure our customers are satisfied while shopping on our platform.  
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Forums</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Blog</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Careers</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Acessibility</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Feedback</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Privacy Rights</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Company Information</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Terms & Conditions</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">ElectoBuy</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+     
+    
+      
+      
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      if(sessionStorage.getItem("user_email_logged_in") == null){
+       var body = document.getElementsByTagName("body")[0];
+       body.style.display = "none"; 
+       alert("You have not signed in. You will now be redirected to the login page.");
+         window.location.href = "/login.html";
+     }
+   </script>
+   
+   
+   <script>
+
+      document.getElementById("logoutbutton").addEventListener("click", e => {
+        e.preventDefault();
+
+        alert("You have successfully logged out");
+            sessionStorage.clear()
+              window.location.replace("login.html")
+
+
+      })
+    
+      
+      
+    
+    </script>
+ 
+
+
+      <!--fetch script for products-->
+
+      <script>
+    var customersearch = document.getElementById("searchproductbutton");
+   
+   customersearch.addEventListener('click' , e =>  {
+ 
+   
+   
+ 
+   fetch(`/api/products/findproductbyname/${document.getElementById("searchproduct").value}`)
+   .then(response => response.json())
+   .then(product => {
+
+                 productid = document.getElementById("id");
+                 productname = document.getElementById("productname");
+                 productprice = document.getElementById("price");
+                 addtocart = document.getElementById("addtocart");
+
+                 productid.innerHTML = `<strong>${product.id}</strong>`;
+                 productname.innerHTML = `<strong>${product.productName}</strong>`;
+                 productprice.innerHTML = `<strong>$${product.productPrice}</strong>`;
+                 addtocart.innerHTML = "<button type='button'> Add to cart </button>" 
+
+
+
+
+       
+
+       
+ 
+ 
+ 
+   })
+
+   
+
+ });
+     </script>
+
+     <script>
+window.onload = function() {
+
+    divtoinsert = document.getElementById("insertdiv");
+    fetch(`/api/products/allproducts`)
+   .then(response => response.json())
+   .then(product => {
+
+                 
+                     
+                product.forEach(element => {
+                    divnewcontent = `<div class="list-group" style="margin-top: 20px;"><div class="card list-group-item list-group-item-actions" style="width: 18rem;"><img src="#" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">${element.productName}</h5><h6 class="card-title">$${element.productPrice}</h6><p class="card-text">${element.productDescription}</p><a href="#" class="btn btn-primary">Add to Cart</a></div> </div></div>`;
+                     newdiv = document.createElement("div");
+                     divtoinsert.appendChild(newdiv)
+                     newdiv.innerHTML = divnewcontent;
+                   
+                     
+                     
+                     
+                 });
+
+
+
+
+       
+
+       
+ 
+ 
+ 
+   })
+
+}
+
+
+   
+
+
+
+     </script>
+    
+  </body>
+</html>

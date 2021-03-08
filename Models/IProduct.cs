@@ -12,6 +12,8 @@ namespace Models
 
         public Product FindProductById(int id);
 
+         public List<Product> GetAllProducts();
+
 
         
 

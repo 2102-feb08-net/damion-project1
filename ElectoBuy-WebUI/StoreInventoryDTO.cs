@@ -16,7 +16,11 @@ namespace Models
 
          public int quantity {get;set;}
 
-       public StoreInventoryDTO(){}
+       public StoreInventoryDTO(){
+       } 
+
+       
+       
 
     }
 

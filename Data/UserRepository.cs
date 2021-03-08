@@ -34,12 +34,13 @@ namespace Data
              var query = _context.Members.FirstOrDefault(p => p.Email == email);
               User user = new User();
              if(query !=null){
+                    user.Role = query.Role;
                     user.FirstName = query.FirstName;
                     user.Lastname = query.LastName;
                     user.Email = query.Email;
                     user.Id = query.Id;
                     user.Password = query.Password;
-                    user.Role = query.Role;
+                    
 
               }
               else{
