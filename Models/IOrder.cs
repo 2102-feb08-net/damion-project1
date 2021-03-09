@@ -7,6 +7,8 @@ namespace Models
     {
 
        public int AddOrder(Models.Order customerorder);
+
+        public int DeleteOrder(Models.Order customerorder);
        public void AddOrderLine(OrderItems OrderItemLineList);
 
        public void ChangeInventory(int id, int quantity, int productid);

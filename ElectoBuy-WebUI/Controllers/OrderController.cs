@@ -38,6 +38,13 @@ namespace Models
 
         }
 
+           [HttpPost("DeleteOrder")]
+        public void DeleteOrder(Models.Order customerorder)
+        { 
+            _userrepo.DeleteOrder(customerorder);
+
+        }
+
 
 
           [HttpPost("changeinventory")]

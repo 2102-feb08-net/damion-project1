@@ -57,11 +57,17 @@ namespace Data
       
 
                      StoreInventory dbInventory = _context.StoreInventories.Where(x => x.StoreId.Equals(id) && x.ProductId.Equals(productid)).FirstOrDefault();
-                    
+                    if(dbInventory.ProductQuantity < 1 ){
+                        throw new ArgumentException("Item is out of stock!");
+                    }
+                    else{
                     int itemquantity = dbInventory.ProductQuantity - quantity;
-
-
                     dbInventory.ProductQuantity = itemquantity;
+
+                    }
+
+
+                    
 
                  
                 
@@ -70,6 +76,25 @@ namespace Data
                 _context.Update(dbInventory);
                 _context.SaveChanges();
             
+
+        
+        }
+
+        int IOrder.DeleteOrder(Models.Order customerorder)
+        {
+            
+            var AddOrder = _context.Orders.OrderBy( x =>  x.Id).Last();
+            Order neworder = new Order();
+
+            neworder.CustomerId = customerorder.CustomerID;
+            neworder.DatePlaced = (DateTime)customerorder.Date;
+            neworder.StoreId = customerorder.StoreID;
+
+            _context.Remove(neworder);
+
+            _context.SaveChanges();
+
+            return neworder.Id;
 
         
         }
