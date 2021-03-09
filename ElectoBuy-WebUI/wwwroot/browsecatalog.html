@@ -11,7 +11,8 @@
     <title>ElectoBuy</title>
     <script>
 
-      var ordercarthistory = window.sessionStorage.getItem("cartlenght")  
+      var ordercarthistory = window.sessionStorage.getItem("cartlenght");
+    
     </script>
     <style>
         body {
@@ -131,7 +132,7 @@ a:link {
           </ul>
           
           <span class="navbar-text">
-            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
             <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -152,42 +153,100 @@ a:link {
                         <div class="search"> <input id="searchproduct" type="text" class="search-input" placeholder="Search..." name=""> <a  href="#" class="search-icon"> <i id="searchproductbutton" class="fa fa-search"></i> </a> </div>
                     </div>
                     <div class="row mt-4 g-1 px-4 mb-5">
-                        <div class="col-md-3">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6> ID</h6>
-                                <div class="text-center mg-text"> <span id="id" class="mg-text"></span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Name</h6>
-                                <div class="text-center mg-text"> <span id="productname" class="mg-text"></span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Price</h6>
-                                <div class="text-center mg-text"> <span id="price" class="mg-text"></span> </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6>Cart</h6>
-                                <div class="text-center mg-text"> <span id="addtocart" class="mg-text"></span> </div>
-                            </div>
-                        </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/Mb8kaPV.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">History</span> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/ueLEPGq.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">Payments</span> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/tmqv0Eq.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">Delivery</span> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/D0Sm15i.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">Product</span> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/Z7BJ8Po.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">Return</span> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-2">
+                          <div class="card-inner p-3 d-flex flex-column align-items-center"> <img src="https://i.imgur.com/YLsQrn3.png" width="50">
+                              <div class="text-center mg-text"> <span class="mg-text">Guarantee</span> </div>
+                          </div>
+                      </div>
+
+                        
 
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
       
 
 
-    <div class="row justify-content-center" >
-        <div id="insertdiv" class="col-auto">
-         
-             
+    
+      <div class="row d-flex justify-content-center">
+          <div id="hideinitialsearchresultdiv" lass="col-md-6" style="display: none;">
+  <div id="quicksearch" class="col-md-12" style="margin-top: 20px;">
+    <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6></h6>
+      <div class="card" style="width: 18rem;">
+        <img id="imagesearch" src="" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 id="productname" class="card-title">Card title</h5>
+          <h6 id="price" class="card-title">Price</h6>
+          <p id="productdescriptionsearch" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" id="submitcartbutton" class="btn btn-primary" onclick="addtocartfunction(this.id); return false;" >Add To Cart</a>
         </div>
       </div>
+    </div>
+</div>
+</div>
+</div>
+  
+    
+
+
+
+
+
+      <!--list of products on document load-->
+      <div  class="container mt-4">
+        <div id="divneedsinserting" class="row d-flex justify-content-center" style="margin-top:60px;">
+        
+        
+        </div>       
+      </div>
       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -229,8 +288,6 @@ a:link {
       ></a>
     </section>
     <!-- Section: Social media -->
-
-
     <!-- Section: Text -->
     <section class="mb-4">
       <p>
@@ -243,8 +300,6 @@ a:link {
     <section class="">
       <!--Grid row-->
       <div class="row">
-        
-
         <!--Grid column-->
         <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Links</h5>
@@ -265,7 +320,6 @@ a:link {
           </ul>
         </div>
         <!--Grid column-->
-
         <!--Grid column-->
         <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Links</h5>
@@ -314,149 +368,141 @@ a:link {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-      if(sessionStorage.getItem("user_email_logged_in") == null){
-       var body = document.getElementsByTagName("body")[0];
-       body.style.display = "none"; 
-       alert("You have not signed in. You will now be redirected to the login page.");
-         window.location.href = "/login.html";
-     }
+                  if(sessionStorage.getItem("user_email_logged_in") == null){
+                  var body = document.getElementsByTagName("body")[0];
+                  body.style.display = "none"; 
+                  alert("You have not signed in. You will now be redirected to the login page.");
+                    window.location.href = "/login.html";
+                }
    </script>
    
-   
-   <script>
+            <!--checks to see if logged in. -->
+            <script>
+                document.getElementById("logoutbutton").addEventListener("click", e => {
+                  e.preventDefault();
 
-      document.getElementById("logoutbutton").addEventListener("click", e => {
-        e.preventDefault();
-
-        alert("You have successfully logged out");
-            sessionStorage.clear()
-              window.location.replace("login.html")
-
-
-      })
-
-
-      document.getElementById("ordercarthistory").innerHTML = window.sessionStorage.getItem("lenght");
-    
-      
-      
-    
-    </script>
- 
+                  alert("You have successfully logged out");
+                      sessionStorage.clear()
+                        window.location.replace("login.html")
+                })
+                document.getElementById("ordercarthistory").innerHTML = window.sessionStorage.getItem("lenght");  
+              </script>
+          
 
 
-      <!--fetch script for products-->
+      <!--fetch script for products on product search-->
 
       <script>
     var customersearch = document.getElementById("searchproductbutton");
    
-   customersearch.addEventListener('click' , e =>  {
- 
-   
-   
- 
-   fetch(`/api/products/findproductbyname/${document.getElementById("searchproduct").value}`)
-   .then(response => response.json())
-   .then(product => {
+   customersearch.addEventListener('click' , e =>  {           
+                  fetch(`/api/products/findproductbyname/${document.getElementById("searchproduct").value}`)
+                  .then(response => response.json())
+                  .then(product => {
 
-                 productid = document.getElementById("id");
-                 productname = document.getElementById("productname");
-                 productprice = document.getElementById("price");
-                 addtocart = document.getElementById("addtocart");
+                                document.getElementById("hideinitialsearchresultdiv").style.display = "block";
+                                window.location.hash = '#hideinitialsearchresultdiv'
+                                
+                                productname = document.getElementById("productname");
+                                productprice = document.getElementById("price");
+                                addtocart = document.getElementById("addtocart");
+                                productdescription = document.getElementById("productdescriptionsearch");
+                                productimage = document.getElementById("imagesearch");
 
-                 productid.innerHTML = `<strong>${product.id}</strong>`;
-                 productname.innerHTML = `<strong>${product.productName}</strong>`;
-                 productprice.innerHTML = `<strong>$${product.productPrice}</strong>`;
-                 addtocart.innerHTML = `<button id='${product.id}' type='button' onclick='addtocartfunction(this.id)'; return false;> Add to cart </button>`
-                  
+                                searchbutton = document.getElementById("submitcartbutton").setAttribute("id", `${product.id}`)
+                                
+                               
+                                productname.innerHTML = `<strong>${product.productName}</strong>`;
+                                
+                                productprice.innerHTML = `<strong>$${product.productPrice}</strong>`;
+                                productdescription.innerHTML = `${product.productDescription}`;
 
-
-
-       
-
-       
- 
- 
- 
-   })
-
-   
-
- });
+                                productimage.src = `${product.imageUrl}`;
+                                
+                  })
+                });
      </script>
-
+<!--add orders on document load-->
      <script>
   document.getElementById("ordercarthistory").innerHTML = sessionStorage.getItem("orderhistorycount");
 window.onload = function() {
+  
   document.getElementById("ordercarthistory").innerHTML = ordercarthistory;
   
 
-    divtoinsert = document.getElementById("insertdiv");
+    divtoinsert = document.getElementById("divneedsinserting");
     fetch(`/api/products/allproducts`)
    .then(response => response.json())
    .then(product => {
+                    
+                        
 
                  
                      
                 product.forEach(element => {
+
+                  
+                  var newdivtoinsert = `<div class="col-4 " style="margin-top: 15px; margin-bottom:30px;">
                     
-                    divnewcontent = `<div class="list-group" style="margin-top: 20px;"><div class="card list-group-item list-group-item-actions" style="width: 18rem;"><img src="${element.imageUrl}" class="card-img-top" alt="..."><div class="card-body"><h5 class="card-title">${element.productName}</h5><h6 class="card-title">$${element.productPrice}</h6><p class="card-text">${element.productDescription}</p><a href="#" class="addproducttocart btn btn-primary" id="${element.id}" onclick="addtocartfunction(this.id); return false;">Add to Cart</a></div> </div></div>`;
+                                                  <div class="card  h-100" style="width: 18rem;">
+                                                        <img src="${element.imageUrl}" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                          <h5 class="card-title text-nowrap"  style="overflow-x:scroll; overflow-y:hidden;">${element.productName}</h5>
+                                                          <h6 class="card-title">$${element.productPrice}</h6>
+                                                          <p class="card-text text-nowrap" style="overflow-x:scroll;"> ${element.productDescription}</p>
+                                                          <a href="#" class="addproducttocart btn btn-primary" id="${element.id}" onclick="addtocartfunction(this.id); return false;">Add to Cart</a>
+                                                        </div>
+                                                      </div>
+                                                    </div>`
+                    
                      newdiv = document.createElement("div");
+                  
+
                      divtoinsert.appendChild(newdiv)
-                     newdiv.innerHTML = divnewcontent;
-                   
-                     
-                     
-                     
+                     newdiv.innerHTML = newdivtoinsert;                                                                           
                  });
-
-
-
-
-       
-
-       
- 
- 
- 
    })
 
 }
 
-var cart = [];;
-function addtocartfunction(clicked_id){
-  
- 
-  fetch(`/api/products/findproductybyid/${clicked_id}`)
-      .then(response => response.json())
-      .then(productname => {
-  
-        cart.push(`${productname.id}`)
-
-
-      
-        ordercarthistory ++
-        window.sessionStorage.setItem("cartlenght", ordercarthistory)
-        
-        document.getElementById("ordercarthistory").innerHTML = ordercarthistory;
-        
-      })
-
-      
-
-      window.sessionStorage.setItem("cart", cart);
-      
-
-      
-    
-
-
-}
-
-console.log(cart)
-
-
      </script>
-    
+    <script>
+        //add to cart functionality to make the badge number change
+                      
+                          
+
+      
+                          function addtocartfunction(clicked_id){ 
+                            var c = sessionStorage.getItem("cart");
+                            if(!c){
+                                var newcart = [];
+                               
+                              }
+                              else{
+                                var newcart = JSON.parse(c);
+                                window.sessionStorage.setItem("cart",  JSON.stringify(newcart)); 
+                              }
+                              console.log(newcart);
+                            fetch(`/api/products/findproductybyid/${clicked_id}`)
+                                .then(response => response.json())
+                                .then(productname => {
+                                  newcart.push(`${productname.id}`)    
+                                  ordercarthistory ++
+                                  window.sessionStorage.setItem("cart",  JSON.stringify(newcart)); 
+                                  window.sessionStorage.setItem("cartlenght", JSON.stringify(ordercarthistory))    
+                                  document.getElementById("ordercarthistory").innerHTML = ordercarthistory;    
+                                  
+                                })
+                             
+                                
+                          }
+                          
+                          
+    </script>
   </body>
 </html>
+
+
+
+
+

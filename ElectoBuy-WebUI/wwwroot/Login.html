@@ -273,12 +273,15 @@ form.addEventListener("submit", e =>  {
           }
           else{
             var cartlenght = 0;
+            var cart = [];
             window.location.replace("index.html")
             window.sessionStorage.setItem("user_email_logged_in", user.email)
             window.sessionStorage.setItem("user_role_logged_in", user.role)
             window.sessionStorage.setItem("user_id_logged_in", user.id)
             window.sessionStorage.setItem("user_password_logged_in", user.password)
             window.sessionStorage.setItem("cartlenght", cartlenght)
+            window.sessionStorage.setItem("cart", JSON.stringify(cart))
+
           }
         });
     });

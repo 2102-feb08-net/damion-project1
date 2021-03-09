@@ -71,7 +71,7 @@
           </ul>
           
           <span class="navbar-text">
-            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
             <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -431,7 +431,7 @@
          window.onload = function(){
           
 
-          var ordercarthistory = window.sessionStorage.getItem("cartlenght");
+          var ordercarthistory = window.sessionStorage.getItem("cartlenght")
           document.getElementById("ordercarthistory").innerHTML = ordercarthistory; 
 
          }
