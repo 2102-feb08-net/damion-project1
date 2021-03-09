@@ -55,18 +55,15 @@ namespace Data
         void IOrder.ChangeInventory(int id, int quantity, int productid)
         {
       
-        
-                StoreInventory dbInventory = _context.StoreInventories
-                    .Where(x =>  x.StoreId == id && x.ProductId == productid)
-                    .FirstOrDefault();
+
+                     StoreInventory dbInventory = _context.StoreInventories.Where(x => x.StoreId.Equals(id) && x.ProductId.Equals(productid)).FirstOrDefault();
                     
                     int itemquantity = dbInventory.ProductQuantity - quantity;
 
 
                     dbInventory.ProductQuantity = itemquantity;
 
-                    Console.WriteLine( dbInventory.ProductQuantity);
-                    
+                 
                 
                 
 

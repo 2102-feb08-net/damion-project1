@@ -459,6 +459,11 @@ function displaylistofstoretochoose(){
                         quantity:Number(newcart.filter(item => item == element).length)
                       }
 
+                      changeiventory = {
+                        id:Number(window.sessionStorage.getItem("store_id")),
+                        quantity:Number(newcart.filter(item => item == element).length),
+                        productid:Number(element),}
+
                       
                         
                         fetch(`/api/orders/AddOrderLine`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(orderline)})
@@ -470,25 +475,7 @@ function displaylistofstoretochoose(){
                                         }
 
                                             else{
-
-                                            }
-
-                                      })
-                                  
-                      
-
-
-
-                    });
-
-
-
-                    newcart.forEach(element => {
-                      changeiventory = {
-                        id:Number(window.sessionStorage.getItem("store_id")),
-                        quantity:Number(newcart.filter(item => item == element).length),
-                        productid:Number(element),}
-                      fetch(`/api/orders/changeinventory`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(changeiventory)})
+                                              fetch("/api/orders/changeinventory",{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(changeiventory)})
                     .then(response => {
 
                       if (!response.ok) {
@@ -504,10 +491,20 @@ function displaylistofstoretochoose(){
                           
                           }
                           });
+
+                                            }
+
+                                      })
+                                  
                       
+
+
+
                     });
-                     
-                      
+
+
+
+                    
                      
 
 
@@ -524,11 +521,11 @@ function displaylistofstoretochoose(){
                 
 
 
-                //var cart = [];
+                var cart = [];
             
             alert("Your order was a success!");
-            //var ordercarthistory = window.sessionStorage.setItem("cartlenght",0);
-           // var c = sessionStorage.setItem("cart",JSON.stringify(cart));
+            var ordercarthistory = window.sessionStorage.setItem("cartlenght",0);
+           var c = sessionStorage.setItem("cart",JSON.stringify(cart));
                      
                  // window.location.replace("index.html")
 
