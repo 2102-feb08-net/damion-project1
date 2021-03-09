@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>ElectoBuy_WebUI</RootNamespace>
+    <UserSecretsId>1132dc15-2aa1-4cfd-b628-ae72a093c146</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
