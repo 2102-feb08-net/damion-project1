@@ -146,55 +146,35 @@ a:link {
       <div class="container mt-4">
         <div class="row d-flex justify-content-center">
             <div class="col-md-9">
-                <div class="card p-4 mt-3">
-                    <h3 class="heading mt-5 text-center">Please Select Store</h3>
-                    <div class="d-flex justify-content-center px-5">
-                        <select id="listofstores" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                          
-                          </select>
-                    </div>
-                    </div>
+              <div class="card p-4 mt-3">
+                <h3 class="heading mt-5 text-center">Search For Store</h3>
+                <div class="d-flex justify-content-center px-5">
+                    <div class="search"> <input id="searchproduct" type="text" class="search-input" placeholder="Search..." name=""> <a  href="#" class="search-icon"> <i id="searchproductbutton" class="fa fa-search"></i> </a> </div>
                 </div>
                 
             </div>
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div id="hideinitialsearchresultdiv" lass="col-md-6" style="display: none;">
-<div id="quicksearch" class="col-md-12" style="margin-top: 20px;">
-  <div class="card-inner p-3 d-flex flex-column align-items-center"> <h6></h6>
-    <div class="card" style="width: 18rem;">
-      <img id="imagesearch" src="" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 id="productname" class="card-title">Card title</h5>
-        <h6 id="price" class="card-title">Price</h6>
-        <p id="productdescriptionsearch" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" id="submitcartbutton" class="btn btn-primary" onclick="addtocartfunction(this.id); return false;" >Add To Cart</a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 
 
-      <div class="container mt-4" style="margin-bottom: 20px;">
+
+      <div class="container mt-4 " style="margin-bottom: 20px;" >
         <div class="row d-flex justify-content-center">
-            <div class="col-md-9 ">
-     <table id="usersearchresulttable" class="table table-responsive d-flex justify-content-center">
+            <div class="col-md-6  ">
+     <table id="usersearchresulttable" class="table table-responsive ">
   <thead>
     <tr>
       <th scope="col">Products</th>
       <th scope="col">Product ID</th>
       <th scope="col">Product Price</th>    
-      <th scope="col">Product Total</th>    
+         
     </tr>
   </thead>
   <tbody>
    
   </tbody>
 </table>
+<button id="checkoutbutton" type="button" class="btn btn-primary" onclick="checkoutprocess()">Check Out</button>
 </div></div></div>
 
    
@@ -205,16 +185,11 @@ a:link {
 
 
 
-  </div>
-
-</div>
-
-
 
 
       
 
-
+</div>
 
 
  <!-- Footer -->
@@ -373,30 +348,26 @@ a:link {
 
 
 
-
 <script>
 window.onload = function(){
-  
-    fetch(`/api/stores`)
-        .then(response => response.json())
-        .then(customer => {
-           console.log(customer);
-            var x = document.getElementById("listofstores");
-            customer.forEach(element => {
+ 
 
-                
-                    var option = document.createElement("option");
-                    option.text = `${element.storePhoneNumber}`;
-                    x.add(option);
-
-
-                
-            });
-        })
-          
-    console.log(newcart)
+    
     newcart.forEach(element => {
-        console.log(element)
+      var customersearch = document.getElementById("searchproductbutton");
+   
+   customersearch.addEventListener('click' , e =>  {           
+                  fetch(`/api/stores/${document.getElementById("searchproduct").value}`)
+                  .then(response => response.json())
+                  .then(product => {
+
+                                window.sessionStorage.setItem("store_id", `${product.id}`)
+
+                                
+                                
+                  })
+                });
+        
         
         fetch(`/api/products/findproductybyid/${element}`)
                                 .then(response => response.json())
@@ -412,7 +383,7 @@ window.onload = function(){
                                     cell2.innerHTML = `${productname.id}`;
                                     cell3.innerHTML = `${productname.productPrice}`;
                                     cell4.innerHTML = "-";
-                                
+                                   
                                    
           
     });
@@ -439,11 +410,141 @@ function addtocartfunction(clicked_id){
                                   window.sessionStorage.setItem("cart", JSON.stringify(newcart));    
                                 })
                                
-                                console.log(newcart);
                           }
 </script>
 
+<script>
  
+
+
+function displaylistofstoretochoose(){
+  fetch(`/api/storesinventory/${document.getElementById("listofstores").value}`)
+      .then(response => response.json())
+      .then(inventory => {
+        
+        console.log()
+
+});
+}
+</script>
+
+
+<script>
+  
+  function checkoutprocess()
+  {
+    var customersearch = document.getElementById("searchproductbutton");
+    const order = {
+                      customerID : window.sessionStorage.getItem("user_id_logged_in"),
+                      date : new Date(),
+                      storeID : window.sessionStorage.getItem("store_id")
+                     
+
+                    };
+
+
+
+
+      
+    fetch(`/api/orders/addorder`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(order)})
+    .then(response => response.json())
+   .then(product => {
+
+              
+                newcart.forEach(element => {
+                      let orderline = {
+                        orderid: Number(product),
+                        productid: Number(element),
+                        quantity:Number(newcart.filter(item => item == element).length)
+                      }
+                      
+                      let changeiventory = {
+                        id:window.sessionStorage.getItem("store_id"),
+                        productid:element,
+                        quantity:newcart.filter(item => item == element).length
+                    }
+
+
+
+                      fetch(`/api/orders/AddOrderLine`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(orderline)})
+            .then(response => {
+
+              if (!response.ok) {
+                  alert("An error occured while trying to create a new product! Please try again") 
+
+              }
+
+                  else{
+
+                   
+
+                    
+                  fetch(`/api/orders/changeinventory`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(changeiventory)})
+            .then(response => {
+
+              if (!response.ok) {
+                  alert("An error occured while updating inventory.") 
+
+              }
+
+                  else{
+
+                   console.log("hello")
+                   
+                    
+                  
+                  }
+                  });
+                   
+
+
+           
+                    
+                  
+                  }
+                  });
+                     
+
+
+
+
+
+
+                });
+             
+
+
+                var cart = [];
+            
+            alert("Your order was a success!");
+            var ordercarthistory = window.sessionStorage.setItem("cartlenght",0);
+            var c = sessionStorage.setItem("cart",JSON.stringify(cart));
+                     
+                 //ddd window.location.replace("index.html")
+
+         
+                  
+
+ });
+}
+
+    
+
+
+    
+      
+      
+     
+    
+      
+
+
+
+
+  
+
+  
+</script>
     
   </body>
 </html>

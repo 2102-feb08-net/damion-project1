@@ -308,7 +308,7 @@
 
             //fetch statement for product inventory
 
-fetch(`https://localhost:5001/api/storesinventory/${store.storePhoneNumber}`)
+fetch(`/api/storesinventory/${store.storePhoneNumber}`)
       .then(response => response.json())
       .then(inventory => {
           console.log(inventory);

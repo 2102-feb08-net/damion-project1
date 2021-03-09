@@ -59,6 +59,8 @@ namespace Data
                     }       
 
                 else{
+                    newfoundstore.Id = query.Id;
+                    
 
                     newfoundstore.StoreLocationAddress = query.StoreLocationAddress;
 
