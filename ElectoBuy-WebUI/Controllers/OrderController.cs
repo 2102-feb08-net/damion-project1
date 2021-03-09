@@ -43,7 +43,19 @@ namespace Models
           [HttpPost("changeinventory")]
         public void ChangeInventory(Models.OrderInventoryUpdator order)
         { 
-            _userrepo.ChangeInventory(order.id, order.productid, order.quantity);
+            _userrepo.ChangeInventory(order.id, order.quantity,order.productid);
+
+        }
+
+
+        [HttpGet("getcustomerorders/{id}")]
+        public ActionResult<IEnumerable<Order>> ReturnAllOrdersBasedOnCustomer(int id)
+        { 
+
+            var store = _userrepo.ReturnAllOrdersBasedOnCustomer(id);
+
+            return Ok(store);
+
 
         }
 

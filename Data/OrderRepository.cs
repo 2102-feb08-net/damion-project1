@@ -52,15 +52,21 @@ namespace Data
 
         }
 
-        void IOrder.ChangeInventory(int id, int Quantity, int Prodid)
+        void IOrder.ChangeInventory(int id, int quantity, int productid)
         {
       
         
                 StoreInventory dbInventory = _context.StoreInventories
-                    .Where(x =>  x.StoreId == id && x.ProductId == Prodid)
-                    .First();
+                    .Where(x =>  x.StoreId == id && x.ProductId == productid)
+                    .FirstOrDefault();
+                    
+                    int itemquantity = dbInventory.ProductQuantity - quantity;
 
-                dbInventory.ProductQuantity =  dbInventory.ProductQuantity - Quantity;
+
+                    dbInventory.ProductQuantity = itemquantity;
+
+                    Console.WriteLine( dbInventory.ProductQuantity);
+                    
                 
                 
 
@@ -69,6 +75,34 @@ namespace Data
             
 
         
+        }
+
+        List<Models.Order> IOrder.ReturnAllOrdersBasedOnCustomer(int id)
+        {
+
+            List<Models.Order> ListOfOrders = new List<Models.Order>();
+
+            List<Order> query = _context.Orders.Where(p => p.CustomerId.Equals(id)).ToList();
+
+             foreach (var i in query)
+            {
+                Models.Order order = new Models.Order();
+                order.Id = i.Id;
+                order.Date = i.DatePlaced;
+                order.CustomerID = i.CustomerId;
+                order.StoreID = i.StoreId;
+
+
+                ListOfOrders.Add(order);            
+            }
+                
+
+
+                
+
+            
+
+            return ListOfOrders;
         }
     }
 }

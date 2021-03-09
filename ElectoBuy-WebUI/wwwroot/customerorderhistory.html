@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7b0af1eaf3.js" crossorigin="anonymous"></script>
+    <title>ElectoBuy</title>
+    
+
+    <style>
+      html{
+        overflow-x: hidden;
+      }
+      .carousel-inner > .carousel-item > img {
+  width:80%;
+  height:80vh;
+}
+
+
+            @media only screen and (max-device-width: 1600px) { 
+
+              #divtohide{
+                display: none;
+              }
+
+
+              }
+
+
+
+          @media only screen and (max-device-width: 600px) { 
+
+              #divtohide{
+                display:block;
+              }
+              #seconddivforbigdisplay{
+                display:none;
+              }
+
+            }
+
+    
+    </style>
+
+
+
+ 
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">ElectoBuy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="customerorderhistory.html"><i class="fas fa-history"></i>Order History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="browsecatalog.html"><i class="far fa-window-restore"></i>Browse Catalog</a>
+            </li>
+          </ul>
+          
+          <span class="navbar-text">
+            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+          </span><br>
+          <span class="navbar-text">
+            <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+          </span>
+          
+        </div>
+      </nav>
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Shop Now!</h1>
+          <p class="lead">Browse our catalogs and view some of the latest technologies released! We offer a variety of products from different vendors.</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="browsecatalog.html" role="button">Shop</a>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="container mt-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+              <div class="card p-4 mt-3">
+                
+                <div class="d-flex justify-content-center px-5">
+                  <table id="storelocationstable" class="table table-striped table-responsive shadow-lg p-3 mb-5 bg-white rounded">
+                    <thead>
+                      <tr class="table-primary">
+                        <th scope="col">Order Id</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Order Date Placed</th>
+                        <th scope="col">Store ID</th>
+                        <th scope="col">Store Address</th>
+                        <th scope="col">Store City</th>
+                        <th scope="col">Store State</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody id="tablebody">
+            
+                    </tbody>
+                  </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.twitter.com/" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com/" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.github.com/" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+
+
+    <!-- Section: Text -->
+    <section class="mb-4">
+      <p>
+        ElectoBuy is an electronic e-commerce store. We work we numerous vendors to deliver our customers high quality products. Our customers are our top priority. ElectoBuy works hard to ensure our customers are satisfied while shopping on our platform.  
+      </p>
+    </section>
+    <!-- Section: Text -->
+
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Forums</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Blog</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Careers</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Acessibility</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Feedback</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Privacy Rights</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Company Information</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Terms & Conditions</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">ElectoBuy</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+     
+    
+      
+      
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
+   <script>
+      if(sessionStorage.getItem("user_email_logged_in") == null){
+       var body = document.getElementsByTagName("body")[0];
+       body.style.display = "none"; 
+       alert("You have not signed in. You will now be redirected to the login page.");
+         window.location.href = "/login.html";
+     }
+   </script>
+   
+   
+   <script>
+
+      document.getElementById("logoutbutton").addEventListener("click", e => {
+        e.preventDefault();
+
+        alert("You have successfully logged out");
+            sessionStorage.clear()
+              window.location.replace("login.html")
+
+
+      })
+    
+      
+      
+    
+    </script>
+ 
+   
+
+<script>
+
+
+
+  window.onload = function() {
+        user = window.sessionStorage.getItem("user_id_logged_in");
+        fetch(`/api/orders/getcustomerorders/${user}`)
+        .then(response => response.json())
+        .then(customer => {
+           
+            var table = document.getElementById("storelocationstable");
+            if (customer == null){
+              table.style.display = "none";
+            }
+            var tbodyRef = table.getElementsByTagName('tbody')[0];
+           customer.forEach(element => {
+            var row = tbodyRef.insertRow(0);
+        
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(3);
+            var cell6 = row.insertCell(3);
+            var cell7 = row.insertCell(3);
+         
+            cell1.innerHTML = `<button   href="/storehistory.html"><a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.id}</a></button`;
+            cell2.innerHTML =  `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${user}</a>`;
+            cell3.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.date}</a>`;
+            cell4.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${element.storeID}</a>`;
+            fetch(`/api/stores/findstorebyid/${element.storeID}`)
+        .then(response => response.json())
+        .then(store => {
+
+          cell5.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${store.storeLocationAddress}</a>`;
+          cell6.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${store.storeLocationCity}</a>`;
+          cell7.innerHTML = `<a id="${element.id}" class="elementid" onclick="linktodetails(this.id)" href="/storehistory.html">${store.storeLocationState}</a>`;
+
+        });
+             
+           });
+  
+            
+
+
+
+        })
+      }
+    </script>
+
+   
+  </body>
+</html>

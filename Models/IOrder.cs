@@ -9,7 +9,10 @@ namespace Models
        public int AddOrder(Models.Order customerorder);
        public void AddOrderLine(OrderItems OrderItemLineList);
 
-       public void ChangeInventory(int id, int Quantity, int Prodid);
+       public void ChangeInventory(int id, int quantity, int productid);
+
+       public List<Order> ReturnAllOrdersBasedOnCustomer(int id);
+       
 
        
 

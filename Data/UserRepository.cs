@@ -18,7 +18,7 @@ namespace Data
               var newCustomer = new Member()
                 {
                     FirstName = customer.FirstName,
-                    LastName = customer.Lastname,
+                    LastName = customer.LastName,
                     Role = customer.Role,
                     Email = customer.Email,
                     Password = customer.Password
@@ -36,7 +36,7 @@ namespace Data
              if(query !=null){
                     user.Role = query.Role;
                     user.FirstName = query.FirstName;
-                    user.Lastname = query.LastName;
+                    user.LastName = query.LastName;
                     user.Email = query.Email;
                     user.Id = query.Id;
                     user.Password = query.Password;
@@ -45,7 +45,7 @@ namespace Data
               }
               else{
                    user.FirstName = null;
-                    user.Lastname = null;
+                    user.LastName = null;
                     user.Email =null;
                     user.Id = null;
                     user.Password =null;
@@ -63,7 +63,7 @@ namespace Data
               User user = new User();
              if(query !=null){
                     user.FirstName = query.FirstName;
-                    user.Lastname = query.LastName;
+                    user.LastName = query.LastName;
                     user.Email = query.Email;
                     user.Id = query.Id;
                     user.Password = query.Password;
@@ -72,7 +72,7 @@ namespace Data
               }
               else{
                    user.FirstName = null;
-                    user.Lastname = null;
+                    user.LastName = null;
                     user.Email =null;
                     user.Id = null;
                     user.Password =null;

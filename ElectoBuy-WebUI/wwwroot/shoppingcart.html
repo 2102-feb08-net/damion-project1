@@ -452,75 +452,85 @@ function displaylistofstoretochoose(){
 
               
                 newcart.forEach(element => {
-                      let orderline = {
-                        orderid: Number(product),
-                        productid: Number(element),
+                  
+                       orderline = {
+                        orderId: Number(product),
+                        productId: Number(element),
                         quantity:Number(newcart.filter(item => item == element).length)
                       }
+
                       
-                      let changeiventory = {
-                        id:window.sessionStorage.getItem("store_id"),
-                        productid:element,
-                        quantity:newcart.filter(item => item == element).length
-                    }
+                        
+                        fetch(`/api/orders/AddOrderLine`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(orderline)})
+                  .then(response => {
+
+                                        if (!response.ok) {
+                                            alert("An error occured while trying to create a new product! Please try again") 
+
+                                        }
+
+                                            else{
+
+                                            }
+
+                                      })
+                                  
+                      
 
 
 
-                      fetch(`/api/orders/AddOrderLine`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(orderline)})
-            .then(response => {
-
-              if (!response.ok) {
-                  alert("An error occured while trying to create a new product! Please try again") 
-
-              }
-
-                  else{
-
-                   
-
-                    
-                  fetch(`/api/orders/changeinventory`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(changeiventory)})
-            .then(response => {
-
-              if (!response.ok) {
-                  alert("An error occured while updating inventory.") 
-
-              }
-
-                  else{
-
-                   console.log("hello")
-                   
-                    
-                  
-                  }
-                  });
-                   
+                    });
 
 
-           
-                    
-                  
-                  }
-                  });
+
+                    newcart.forEach(element => {
+                      changeiventory = {
+                        id:Number(window.sessionStorage.getItem("store_id")),
+                        quantity:Number(newcart.filter(item => item == element).length),
+                        productid:Number(element),}
+                      fetch(`/api/orders/changeinventory`,{method: 'POST',headers: {'Content-Type': 'application/json'}, body:JSON.stringify(changeiventory)})
+                    .then(response => {
+
+                      if (!response.ok) {
+                          alert("An error occured while updating inventory.") 
+
+                      }
+
+                          else{
+
+                          console.log(changeiventory.productId)
+                          
+                            
+                          
+                          }
+                          });
+                      
+                    });
+                     
+                      
                      
 
 
 
+                            
+
+                     
+                                                                          
+                      
+                      
+                
+
+               
+                
 
 
-
-                });
-             
-
-
-                var cart = [];
+                //var cart = [];
             
             alert("Your order was a success!");
-            var ordercarthistory = window.sessionStorage.setItem("cartlenght",0);
-            var c = sessionStorage.setItem("cart",JSON.stringify(cart));
+            //var ordercarthistory = window.sessionStorage.setItem("cartlenght",0);
+           // var c = sessionStorage.setItem("cart",JSON.stringify(cart));
                      
-                 //ddd window.location.replace("index.html")
+                 // window.location.replace("index.html")
 
          
                   

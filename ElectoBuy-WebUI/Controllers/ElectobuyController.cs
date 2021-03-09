@@ -50,7 +50,7 @@ namespace Models
             Models.User  newuser = new User();
             newuser.Email = user.Email;
             newuser.FirstName =  user.FirstName;
-            newuser.Lastname = user.LastName;
+            newuser.LastName = user.LastName;
             newuser.Password = user.Password;
             newuser.Role = user.Role;
             
