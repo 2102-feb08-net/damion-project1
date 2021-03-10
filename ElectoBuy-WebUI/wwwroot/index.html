@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -63,6 +63,7 @@
           </ul>
           
           <span class="navbar-text">
+
             <a class="nav-link" href="shoppingcart.html" id="ordercartbadgebutton"><i class="fas fa-shopping-cart" id=></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
@@ -421,10 +422,6 @@
 
       <script>
          window.onload = function(){
-          
-
-          var ordercarthistory = window.sessionStorage.getItem("cartlenght")
-          document.getElementById("ordercarthistory").innerHTML = ordercarthistory; 
 
           var spannumber = document.getElementById("ordercarthistory");
   var ordercartbadebutton = document.getElementById("ordercartbadgebutton");
@@ -433,6 +430,8 @@
         if(spannumber.innerHTML <1 ){
           ordercartbadebutton.removeAttribute("href");
          }
+
+
 
          }
       </script>
