@@ -131,8 +131,9 @@ a:link {
             </li>
           </ul>
           
+           
           <span class="navbar-text">
-            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+            <a class="nav-link" href="shoppingcart.html" id="ordercartbadgebutton"><i class="fas fa-shopping-cart" id=></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
             <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -228,28 +229,6 @@ a:link {
         </div>       
       </div>
       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  <!-- Footer -->
 <footer class="bg-dark text-center text-white">
@@ -426,7 +405,14 @@ a:link {
      <script>
   document.getElementById("ordercarthistory").innerHTML = sessionStorage.getItem("orderhistorycount");
 window.onload = function() {
-  
+
+  var spannumber = document.getElementById("ordercarthistory");
+  var ordercartbadebutton = document.getElementById("ordercartbadgebutton");
+
+
+        if(spannumber.innerHTML <1 ){
+          ordercartbadebutton.removeAttribute("href");
+         }
   document.getElementById("ordercarthistory").innerHTML = ordercarthistory;
   
 
@@ -499,6 +485,7 @@ window.onload = function() {
                           
                           
     </script>
+
   </body>
 </html>
 
