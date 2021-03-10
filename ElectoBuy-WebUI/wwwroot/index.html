@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -71,7 +71,7 @@
           </ul>
           
           <span class="navbar-text">
-            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+            <a class="nav-link" href="shoppingcart.html" id="order-cart-link"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
             <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -429,11 +429,14 @@
 
       <script>
          window.onload = function(){
-          
 
-          var ordercarthistory = window.sessionStorage.getItem("cartlenght")
-          document.getElementById("ordercarthistory").innerHTML = ordercarthistory; 
-
+             var ordercarthistory = window.sessionStorage.getItem("cartlenght");
+             var orderCartLink = document.getElementById("order-cart-link");
+             if (parseInt(ordercarthistory === 0)) {
+                 orderCartLink.href = '';
+             } else {
+                 document.getElementById("ordercarthistory").innerHTML = ordercarthistory; 
+             }
          }
       </script>
    
