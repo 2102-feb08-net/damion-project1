@@ -10,7 +10,6 @@
     <script src="https://kit.fontawesome.com/7b0af1eaf3.js" crossorigin="anonymous"></script>
     <title>ElectoBuy</title>
     
-
     <style>
       html{
         overflow-x: hidden;
@@ -19,8 +18,6 @@
   width:80%;
   height:80vh;
 }
-
-
             @media only screen and (max-device-width: 1600px) { 
 
               #divtohide{
@@ -29,9 +26,6 @@
 
 
               }
-
-
-
           @media only screen and (max-device-width: 600px) { 
 
               #divtohide{
@@ -42,8 +36,6 @@
               }
 
             }
-
-    
     </style>
 
 
@@ -71,7 +63,7 @@
           </ul>
           
           <span class="navbar-text">
-            <a class="nav-link" href="shoppingcart.html"><i class="fas fa-shopping-cart"></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
+            <a class="nav-link" href="shoppingcart.html" id="ordercartbadgebutton"><i class="fas fa-shopping-cart" id=></i>Order Cart<span id="ordercarthistory" class="badge badge-secondary"></span></a>
           </span><br>
           <span class="navbar-text">
             <a class="nav-link" id="logoutbutton" href="#"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
@@ -434,8 +426,19 @@
           var ordercarthistory = window.sessionStorage.getItem("cartlenght")
           document.getElementById("ordercarthistory").innerHTML = ordercarthistory; 
 
+          var spannumber = document.getElementById("ordercarthistory");
+  var ordercartbadebutton = document.getElementById("ordercartbadgebutton");
+
+
+        if(spannumber.innerHTML <1 ){
+          ordercartbadebutton.removeAttribute("href");
+         }
+
          }
       </script>
+
+
+
    
   </body>
 </html>
