@@ -1,8 +1,7 @@
 <h1>ElectoBuy</h1><br /><br />
 <h3>Project Description</h3>
 ElectoBuy is a store management system for the store franchise ElectoBuy. This applications allows users and members of the ElectoBuy team to perform crud operations on the backend database directly from the webpage.<br />
-<br />
-<br />
+<hr>
 <h3>Technologies Used</h3>
 <ul>
   <li>ASP.NET CORE WEB API</li>
@@ -14,7 +13,7 @@ ElectoBuy is a store management system for the store franchise ElectoBuy. This a
   <li>Azure Devpops</li>
   <li>Azure Webservices</li>  
 </ul>
- <br />
+ <hr>
 <h3>Features</h3>
 <ul>
   <li>Add users to the database(customer)</li>
@@ -27,12 +26,12 @@ ElectoBuy is a store management system for the store franchise ElectoBuy. This a
   <li>Add new products and change product quantity based on store(admins)</li>
   <li>place orders with multiple items(customers)</li>
   <li>search items(customers)</li>
-</ul><br />
+</ul><hr>
 <h3>To-do list: </h3>
 <ul>
   <li>Hide area to submit order until customer fill in store phone number,id, address.</li>
   <li>Reformat time that is displayed to the customer.</li>
-</ul><br/>
+</ul><hr>
 <h3>Getting Started </h3>
 <ul>
   <li>Use the command 'git clone https://github.com/2102-feb08-net/damion-project1' to clone the project to your local machine (without the single quotes).</li>
