@@ -1,4 +1,4 @@
-<h1>ElectoBuy</h1><br /><br />
+<h1>ElectoBuy</h1><br /><hr>
 <h3>Project Description</h3>
 ElectoBuy is a store management system for the store franchise ElectoBuy. This applications allows users and members of the ElectoBuy team to perform crud operations on the backend database directly from the webpage.<br />
 <hr>
@@ -38,6 +38,5 @@ ElectoBuy is a store management system for the store franchise ElectoBuy. This a
   <li>Be sure .net 5 is installed on your machine.</li>
   <li>run dotnet restore to download all the project dependencies. </li>
 </ul>
-
-.
+<hr>
 
