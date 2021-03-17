@@ -33,7 +33,7 @@ ElectoBuy is a store management system for the store franchise ElectoBuy. This a
   <li>Hide area to submit order until customer fill in store phone number,id, address.</li>
   <li>Reformat time that is displayed to the customer.</li>
 </ul><br/>
-<h3Getting Started </h3>
+<h3>Getting Started </h3>
 <ul>
   <li>Use the command 'git clone https://github.com/2102-feb08-net/damion-project1' to clone the project to your local machine (without the single quotes).</li>
   <li>Be sure .net 5 is installed on your machine.</li>
