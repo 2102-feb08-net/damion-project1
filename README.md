@@ -1,5 +1,5 @@
 ElectoBuy<br /><br />
-Project Description
+Project Description<br />
 ElectoBuy is a store management system for the store franchise ElectoBuy. This applications allows users and members of the ElectoBuy team to perform crud operations on the backend database directly from the webpage.<br />
 <br />
 <br />
@@ -13,8 +13,6 @@ Javascript<br />
 Azure Devpops<br />
 Azure Webservices<br /><br />
 Features<br />
-
-
 Add users to the database(customer)<br />
 Add new stores (admin)<br />
 View store sales history (admin)<br />
