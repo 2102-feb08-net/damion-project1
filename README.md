@@ -4,14 +4,17 @@ ElectoBuy is a store management system for the store franchise ElectoBuy. This a
 <br />
 <br />
 Technologies Used<br />
-ASP.NET CORE WEB API<br />
-C#<br />
-SQL SERVER<br />
-HTML<br />
-CSS<br />
-Javascript<br />
-Azure Devpops<br />
-Azure Webservices<br /><br />
+<ul>
+  <li>ASP.NET CORE WEB API</li>
+<li>C#</li>
+<li>SQL SERVER</li>
+<li>HTML</li>
+<li>CSS</li>
+<li>Javascript</li>
+<li>Azure Devpops</li>
+<li>Azure Webservices</li>
+  
+  <br />
 Features<br />
 Add users to the database(customer)<br />
 Add new stores (admin)<br />
