@@ -24,7 +24,6 @@ Add new products and change product quantity based on store(admins)<br />
 place orders with multiple items(customers)<br />
 search items(customers)<br /><br />
 To-do list:<br />
-
 Hide area to submit order until customer fill in store phone number,id, address.<br />
 Reformat time that is displayed to the customer.<br /><br />
 Getting Started<br />
