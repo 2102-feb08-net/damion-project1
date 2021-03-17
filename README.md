@@ -1,4 +1,4 @@
-<h1>ElectoBuy</h1><br /><hr>
+<h1>ElectoBuy</h1><hr>
 <h3>Project Description</h3>
 ElectoBuy is a store management system for the store franchise ElectoBuy. This applications allows users and members of the ElectoBuy team to perform crud operations on the backend database directly from the webpage.<br />
 <hr>
